@@ -1,4 +1,4 @@
-create table items (
-   id serial primary key not null,
-   name varchar(2000)
+create table rabbit (
+    id serial primary key not null,
+    created_date date
 );
