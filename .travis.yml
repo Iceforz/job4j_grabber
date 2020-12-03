@@ -7,7 +7,7 @@ services:
   - postgresql
 
 before_install:
-  - psql -c 'create database tracker;' -U postgres
+  - psql -c 'create database job4j_grabber;' -U postgres
 
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
@@ -26,4 +26,4 @@ notifications:
     on_failure: always # default: always
 env:
       global:
-        - CODECOV_TOKEN="c6d7d983-8bb1-482d-a9a2-7fdae1832ff4"
+        - CODECOV_TOKEN="b192f17d-5573-43ba-9120-8f195fc10c73"
