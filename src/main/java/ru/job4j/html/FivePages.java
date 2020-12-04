@@ -6,6 +6,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class FivePages {
+
     public static void main(String[] args) throws IOException {
         printPages(5);
     }
