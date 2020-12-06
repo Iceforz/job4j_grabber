@@ -46,7 +46,7 @@ public class SqlRuParser implements Parse {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new Post(title, desc, date, link);
+        return new Post(title, desc, link, date);
     }
 }
 

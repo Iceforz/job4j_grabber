@@ -3,7 +3,7 @@ package ru.job4j.html;
 import java.util.List;
 
 public interface Store {
-    boolean save(Post post);
+    void save(Post post);
 
     List<Post> getAll();
 

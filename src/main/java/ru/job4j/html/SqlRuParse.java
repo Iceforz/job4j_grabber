@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class SqlRuParse {
+    private static int id;
+
     public static void main(String[] args) throws IOException {
         printJobsList(5);
         System.out.println(getJobInfo("https://www.sql.ru/forum/1331208/"));
@@ -37,7 +39,7 @@ public class SqlRuParse {
         LocalDateTime date = RussianDate.convert(footer.first()
                 .text()
                 .split("\\s\\[")[0]);
-        return new Post(title, desc, date, url);
+        return new Post(title, desc, url, date);
     }
 }
 
