@@ -14,7 +14,7 @@ public class Account {
         System.out.printf("Account deleted %s %d%n", name, age);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Runtime rt = Runtime.getRuntime();
         long start = rt.freeMemory();
         System.out.println("Memory before object was created = " + start + " byte");
@@ -25,7 +25,17 @@ public class Account {
         System.out.println("Memory after 15 objects was created = " + end + " byte");
         long resultAll = start - end;
         System.out.printf("Amount of memory that was used for 15 objects of Account = "
-                + resultAll + " байт%n"
+                + resultAll + " byte%n"
                 + "Amount of memory on one Account = " + resultAll / 15 + " byte %n");
+        long secondStart = rt.freeMemory();
+        System.out.println("Before = " + secondStart + " byte");
+        new EmptyAccount();
+        long secondEnd = rt.freeMemory();
+        System.out.println("After object without fields was created = " + secondEnd + " byte");
+        long secondResult = secondStart - secondEnd;
+        System.out.println("Memory used by object without fields = " + secondResult + " byte");
+        System.gc();
+        Thread.sleep(4000);
     }
 }
+
