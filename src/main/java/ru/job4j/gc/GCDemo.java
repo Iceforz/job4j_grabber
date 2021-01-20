@@ -43,7 +43,8 @@ public class GCDemo {
 
 
 CMS GC -XX:+UseConcMarkSweepGC
-Java HotSpot(TM) 64-Bit Server VM warning: Ignoring option UseConcMarkSweepGC; support was removed in 14.0
+Java HotSpot(TM) 64-Bit Server VM warning: Ignoring option UseConcMarkSweepGC;
+support was removed in 14.0
 [0.009s][info][gc] Using G1
 [0.025s][info][gc] Periodic GC disabled
 [0.119s][info][gc] GC(0) Pause Full (System.gc()) 3M->2M(5M) 7.438ms

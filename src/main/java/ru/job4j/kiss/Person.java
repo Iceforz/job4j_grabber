@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class Person {
 
-  final static Comparator<Person> AGECOMP = new Comparator<>() {
+ /* final static Comparator<Person> AGECOMP = new Comparator<>() {
 
         @Override
         public int compare(Person one, Person two) {
@@ -12,13 +12,13 @@ public class Person {
         }
     };
 
-  final static Comparator<Person> LENGTHCOMP = new Comparator<Person>() {
+  final static Comparator<Person> LENGTHCOMP = new Comparator<>() {
 
-        @Override
-        public int compare(Person one, Person two) {
-            return (one.getName().length() - two.getName().length());
-        }
-    };
+      @Override
+      public int compare(Person one, Person two) {
+          return (one.getName().length() - two.getName().length());
+      }
+  };
 
     private final String name;
     private final int age;
@@ -34,6 +34,6 @@ public class Person {
 
     public int getAge() {
         return age;
-    }
+  */
 }
 

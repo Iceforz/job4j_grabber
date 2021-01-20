@@ -29,7 +29,7 @@ public class Account {
                 + "Amount of memory on one Account = " + resultAll / 15 + " byte %n");
         long secondStart = rt.freeMemory();
         System.out.println("Before = " + secondStart + " byte");
-        new EmptyAccount();
+          new EmptyAccount();
         long secondEnd = rt.freeMemory();
         System.out.println("After object without fields was created = " + secondEnd + " byte");
         long secondResult = secondStart - secondEnd;

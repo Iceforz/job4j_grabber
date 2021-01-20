@@ -6,7 +6,8 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-public class SqlRuParse {
+public abstract
+class SqlRuParse implements Parse {
     private static int id;
 
     public static void main(String[] args) throws IOException {

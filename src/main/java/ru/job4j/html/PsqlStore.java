@@ -92,7 +92,7 @@ public class PsqlStore implements Store, AutoCloseable {
 
     public static void main(String[] args) {
         try (InputStream in = PsqlStore.class.getClassLoader()
-                .getResourceAsStream("./db.properties")) {
+                .getResourceAsStream("db.properties")) {
             Properties config = new Properties();
             config.load(in);
             PsqlStore psqlStore = new PsqlStore(config);
