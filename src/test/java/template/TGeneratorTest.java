@@ -1,15 +1,17 @@
 package template;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 
-class GeneratorTest {
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public class TGeneratorTest {
 
     @Test
     public void whenWork() {
-        Generator generator = new TGenerator();
+        TGenerator generator = new TGenerator();
         String temp = "Hello ${name}, how you ${subject}?";
         Map<String, String> map = Map.of(
                 "name", "Alex",
@@ -22,21 +24,21 @@ class GeneratorTest {
 
     @Test
     public void whenNotEnough() {
-        Generator generator = new TGenerator();
+        TGenerator generator = new TGenerator();
         String temp = "Hello ${name}, how you ${subject}?";
         Map<String, String> map = Map.of("name", "Alex");
-        generator.produce(temp, map);
+        assertThrows(IllegalArgumentException.class, () -> generator.produce(temp, map));
     }
 
     @Test
-    public void whenTooMany() {
-        Generator generator = new TGenerator();
+    public void whenToMany() {
+        TGenerator generator = new TGenerator();
         String temp = "Hello ${name}, how you ${subject}?";
         Map<String, String> map = Map.of(
                 "name", "Alex",
                 "subject", "doing",
                 "anotherSubject", "buddy"
         );
-        generator.produce(temp, map);
+        assertThrows(IllegalArgumentException.class, () -> generator.produce(temp, map));
     }
 }
