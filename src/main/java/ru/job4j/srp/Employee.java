@@ -4,12 +4,12 @@ import java.util.Calendar;
 import java.util.Objects;
 
 public class Employee {
-  /*  private String name;
+    private String name;
     private Calendar hired;
     private Calendar fired;
     private double salary;
 
-    public Employer(String name, Calendar hired, Calendar fired, double salary) {
+    public Employee(String name, Calendar hired, Calendar fired, double salary) {
         this.name = name;
         this.hired = hired;
         this.fired = fired;
@@ -49,6 +49,11 @@ public class Employee {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -56,12 +61,7 @@ public class Employee {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Employer employer = (Employer) o;
-        return Objects.equals(name, employer.name);
+        Employee employee = (Employee) o;
+        return Objects.equals(name, employee.name);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }*/
 }
