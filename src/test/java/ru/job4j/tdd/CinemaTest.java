@@ -1,12 +1,14 @@
-package tdd;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.is;
-
+package ru.job4j.tdd;
 import org.junit.Ignore;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CinemaTest {
 
