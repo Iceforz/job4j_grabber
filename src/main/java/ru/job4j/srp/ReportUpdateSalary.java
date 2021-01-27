@@ -15,7 +15,7 @@ public class ReportUpdateSalary implements Rep {
         text.append("Name; Hired; Fired; Salary;")
                 .append(System.lineSeparator());
         for (Employee employee : store.findBy(filter)) {
-            String salary = (employee.getSalary() / 1000) + " тыс. руб.";
+            String salary = (employee.getSalary() / 1) + " тыс. руб.";
             text.append(employee.getName()).append(";")
                     .append(employee.getHired()).append(";")
                     .append(employee.getFired()).append(";")
