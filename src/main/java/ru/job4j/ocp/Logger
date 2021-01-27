@@ -1,0 +1,25 @@
+package ru.job4j.ocp;
+
+public class Logger
+{
+    public void Log(string logText)
+    {
+        // записать данные в файл
+    }
+}
+
+public class Main
+{
+    private Logger logger;
+
+    public Main()
+    {
+        logger = new Logger();
+    }
+
+    public void SendLog(string text)
+    {
+        // отсылка данных
+
+        logger.Log(string.Format("Отправлено '{0}'", text));
+    }

@@ -1,0 +1,8 @@
+package ru.job4j.ocp;
+
+public class DatabaseLogger {
+    public void Log(string logText)
+    {
+        // сохранить данные в базу данных
+    }
+}
