@@ -1,9 +1,9 @@
 package ru.job4j.lsp;
 
 public class Warehouse extends Farm {
-    private String address;
+    private String country;
 
-    public Warehouse(String address) {
-        this.address = address;
+    public Warehouse(String country) {
+        this.country = country;
     }
 }
