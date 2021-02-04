@@ -1,18 +1,25 @@
 package ru.job4j.lsp;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-public class Farm {
-    private List<Food> farm = new ArrayList<>();
+public interface Farm {
 
-    public void addFood(Food food) {
-        farm.add(food);
-    }
+     void addFood(Food food);
 
-    public List<Food> showFood() {
-        return farm;
+    boolean accept(Food food);
+
+    List<Food> clear();
+
+    default double percentageSpent(Food food) {
+        long now =  Calendar.getInstance().getTimeInMillis();
+        long expired = food.getExpiryDate().getTimeInMillis();
+        long created = food.getCreateDate().getTimeInMillis();
+        return (double) (now - created) / (expired - created);
     }
 }
+
+
+
 
 
