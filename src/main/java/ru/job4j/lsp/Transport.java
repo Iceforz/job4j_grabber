@@ -4,12 +4,9 @@ public interface Transport {
 
     String getModel();
 
-    String getType();
-// грузовой / легковой
-
     int getSize();
 //для подбора подходящего места
 
-    String getId();
+    int getId();
 
 }
