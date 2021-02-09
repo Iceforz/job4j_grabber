@@ -13,12 +13,12 @@ public class ParkTransport implements Parking {
 
     @Override
     public Transport[] getPassengerCarPlaces() {
-        return passengerCarPlaces;
+        return passengerCarPlaces.clone();
     }
 
     @Override
     public Transport[] getTruckPlaces() {
-        return truckPlaces;
+        return truckPlaces.clone();
     }
 
     @Override

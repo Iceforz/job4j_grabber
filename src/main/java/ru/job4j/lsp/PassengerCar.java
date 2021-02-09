@@ -1,7 +1,7 @@
 package ru.job4j.lsp;
 
 public class PassengerCar implements Transport {
-    private int size;
+    private static int size = 1;
     private final String model;
     private int id;
 
