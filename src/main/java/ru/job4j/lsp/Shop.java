@@ -13,22 +13,31 @@ public class Shop implements Farm {
 
     @Override
     public void addFood(Food food) {
-        list.add(food);
+        this.list.add(food);
     }
 
     @Override
     public boolean accept(Food food) {
-        double check = percentageSpent(food);
-        if (check >= 0.25 && check < 1) {
-            food.setDiscount(food.isDiscount());
-        }
-        return check > 0.25 && check < 1;
-    }
+        double rsl = percentageSpent(food);
+        if (rsl > 0.25 || rsl < 1) {
+              return true;
+          } else if (rsl >= 0.75 && rsl < 1) {
+               food.setDiscount(food.isDiscount());
+              return true;
+          } else {
+              return false;
+         }
+}
 
     @Override
     public List<Food> clear() {
-        List<Food> listReturn = list;
+        List<Food> listReturn = new ArrayList<>(list);
         list.clear();
         return listReturn;
+    }
+
+    @Override
+    public List<Food> get() {
+        return list;
     }
 }

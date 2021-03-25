@@ -13,19 +13,24 @@ public class Trash implements Farm {
 
     @Override
     public void addFood(Food food) {
-        list.add(food);
+        this.list.add(food);
     }
 
     @Override
     public boolean accept(Food food) {
-        return  percentageSpent(food) >= 1;
+        return percentageSpent(food) >= 1;
     }
 
     @Override
     public List<Food> clear() {
-        List<Food> listReturn = list;
+        List<Food> listReturn = new ArrayList<>(list);
         list.clear();
         return listReturn;
+    }
+
+    @Override
+    public List<Food> get() {
+        return list;
     }
 }
 

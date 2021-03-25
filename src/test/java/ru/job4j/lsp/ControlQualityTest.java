@@ -20,12 +20,12 @@ public class ControlQualityTest {
             new GregorianCalendar(2022, Calendar.FEBRUARY, 4));
 
     private Food carrot = new Carrot("Baby carrot",
-            new GregorianCalendar(2021, Calendar.FEBRUARY, 2),
-            new GregorianCalendar(2021, Calendar.FEBRUARY, 6));
+            new GregorianCalendar(2021, Calendar.FEBRUARY, 1),
+            new GregorianCalendar(2021, Calendar.FEBRUARY, 5));
 
     private Food garlic = new Garlic("Chinese",
-            new GregorianCalendar(2021, Calendar.FEBRUARY, 23),
-            new GregorianCalendar(2021, Calendar.FEBRUARY, 28));
+            new GregorianCalendar(2021, Calendar.FEBRUARY, 5),
+            new GregorianCalendar(2021, Calendar.FEBRUARY, 20));
 
     private Food potato = new Potato("Cherry",
             new GregorianCalendar(2021, Calendar.FEBRUARY, 1),
@@ -35,22 +35,22 @@ public class ControlQualityTest {
     public void whenLess25ToWarehouse() {
         List<Food> foods = new ArrayList<>();
         foods.add(ham);
-        ControlQuality cq = new ControlQuality(warehouse, shop, trash);
-        cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 15).getTimeInMillis());
-        cq.toFarm(foods);
-        List<Food> warehouseList = warehouse.showFood();
+        ControlQuality cq = new ControlQuality(List.of(warehouse, shop, trash));
+        cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 4).getTimeInMillis());
+        cq.distribute(foods);
+        List<Food> warehouseList = warehouse.clear();
         boolean warehouseRsl = warehouseList.contains(ham);
         assertThat(warehouseRsl, is(true));
     }
 
     @Test
-    public void whenBetween25and75ToShop() {
+    public void whenBetween25and100ToShop() {
         List<Food> foods = new ArrayList<>();
         foods.add(carrot);
-        ControlQuality cq = new ControlQuality(warehouse, shop, trash);
-        cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 4).getTimeInMillis());
-        cq.toFarm(foods);
-        List<Food> shopList = shop.showFood();
+        ControlQuality cq = new ControlQuality(List.of(warehouse, shop, trash));
+        cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 3).getTimeInMillis());
+        cq.distribute(foods);
+        List<Food> shopList = shop.clear();
         boolean shopRsl = shopList.contains(carrot);
         boolean carrotDiscount = carrot.isDiscount();
         assertThat(shopRsl, is(true));
@@ -58,28 +58,45 @@ public class ControlQualityTest {
     }
 
     @Test
-    public void whenMore75SetDiscount() {
+
+    public void whenMore75NoDiscount() {
         List<Food> foods = new ArrayList<>();
         foods.add(garlic);
-        ControlQuality cq = new ControlQuality(warehouse, shop, trash);
-        cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 27).getTimeInMillis());
-        cq.toFarm(foods);
-        List<Food> shopList = shop.showFood();
+        ControlQuality cq = new ControlQuality(List.of(warehouse, shop, trash));
+        cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 6).getTimeInMillis());
+        cq.distribute(foods);
+        List<Food> shopList = shop.clear();
         boolean shopRsl = shopList.contains(garlic);
         boolean garlicDiscount = garlic.isDiscount();
         assertThat(shopRsl, is(true));
-        assertThat(garlicDiscount, is(true));
+        assertThat(garlicDiscount, is(false));
     }
 
     @Test
     public void whenExpiredToTrash() {
         List<Food> foods = new ArrayList<>();
         foods.add(potato);
-        ControlQuality cq = new ControlQuality(warehouse, shop, trash);
-        cq.setNow(new GregorianCalendar(2022, Calendar.FEBRUARY, 9).getTimeInMillis());
-        cq.toFarm(foods);
-        List<Food> trashList = trash.showFood();
+        ControlQuality cq = new ControlQuality(List.of(warehouse, shop, trash));
+        cq.setNow(new GregorianCalendar(2024, Calendar.MAY, 9).getTimeInMillis());
+        cq.distribute(foods);
+        List<Food> trashList = trash.clear();
         boolean trashRsl = trashList.contains(potato);
         assertThat(trashRsl, is(true));
+    }
+
+    @Test
+    public void whenAddToFarmsThenResort() {
+        List<Food> foods = new ArrayList<>();
+        foods.add(potato);
+        ControlQuality cq = new ControlQuality(List.of(warehouse, shop, trash));
+        cq.setNow(new GregorianCalendar(2024, Calendar.MAY, 9).getTimeInMillis());
+        cq.distribute(foods);
+        List<Food> trashList = trash.clear();
+        boolean trashRsl = trashList.contains(potato);
+        assertThat(trashRsl, is(true));
+        cq.resort();
+        cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 5).getTimeInMillis());
+        boolean shopRsl = trashList.contains(potato);
+        assertThat(shopRsl, is(true));
     }
 }

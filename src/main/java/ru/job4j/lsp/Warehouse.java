@@ -13,7 +13,7 @@ public class Warehouse implements Farm {
 
     @Override
     public void addFood(Food food) {
-        list.add(food);
+        this.list.add(food);
     }
 
     @Override
@@ -23,8 +23,13 @@ public class Warehouse implements Farm {
 
     @Override
     public List<Food> clear() {
-        List<Food> listReturn = list;
+        List<Food> listReturn = new ArrayList<>(list);
         list.clear();
         return listReturn;
+    }
+
+    @Override
+    public List<Food> get() {
+        return list;
     }
 }
