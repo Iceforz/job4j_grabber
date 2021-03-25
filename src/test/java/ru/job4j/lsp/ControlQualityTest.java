@@ -96,7 +96,8 @@ public class ControlQualityTest {
         assertThat(trashRsl, is(true));
         cq.resort();
         cq.setNow(new GregorianCalendar(2021, Calendar.FEBRUARY, 5).getTimeInMillis());
-        boolean shopRsl = trashList.contains(potato);
+        List<Food> shopList = shop.clear();
+        boolean shopRsl = shopList.contains(potato);
         assertThat(shopRsl, is(true));
     }
 }
